@@ -19,8 +19,16 @@ io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
 
   socket.on("send_message", (data) => {
-    console.log(data);
-  })
+    // socket.broadcast.emit("receive_message", data); ----> when you want to exclude the sender
+    io.emit("receive_message", {
+      user: socket.id,
+      content: data,
+    });
+  });
+
+  // socket.on("user_started_typing", (data) => {
+  //   socket.broadcast.emit("user_is_typing", data);
+  // });
 });
 
 server.listen(3001, () => {
