@@ -3,6 +3,17 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 
+const { faker } =  require('@faker-js/faker');
+const {
+  SEND_MESSAGE,
+  RECEIVE_MESSAGE,
+  USER_STARTED_TYPING,
+  USER_STOPPED_TYPING,
+  USER_IS_TYPING,
+  USER_IS_NOT_TYPING,
+  ON_CONNECTION
+} = require("../src/utils/constants.js");
+
 const app = expess();
 app.use(cors());
 
@@ -15,20 +26,23 @@ const io = new Server(server, {
 });
 
 // this starts running when someone starts using the server
-io.on("connection", (socket) => {
+io.on(ON_CONNECTION, (socket) => {
   console.log(`User connected: ${socket.id}`);
+  const generatedName = faker.name.firstName();
 
-  socket.on("send_message", (data) => {
-    // socket.broadcast.emit("receive_message", data); ----> when you want to exclude the sender
-    io.emit("receive_message", {
-      user: socket.id,
+  socket.on(SEND_MESSAGE, (data) => {
+    io.emit(RECEIVE_MESSAGE, {
+      user: generatedName,
       content: data,
     });
   });
 
-  // socket.on("user_started_typing", (data) => {
-  //   socket.broadcast.emit("user_is_typing", data);
-  // });
+  socket.on(USER_STARTED_TYPING, () => {
+    socket.broadcast.emit(USER_IS_TYPING);
+  });
+  socket.on(USER_STOPPED_TYPING, () => {
+    socket.broadcast.emit(USER_IS_NOT_TYPING);
+  });
 });
 
 server.listen(3001, () => {
