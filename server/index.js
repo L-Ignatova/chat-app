@@ -3,7 +3,6 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 
-const { faker } =  require('@faker-js/faker');
 const {
   SEND_MESSAGE,
   RECEIVE_MESSAGE,
@@ -28,13 +27,9 @@ const io = new Server(server, {
 // this starts running when someone starts using the server
 io.on(ON_CONNECTION, (socket) => {
   console.log(`User connected: ${socket.id}`);
-  const generatedName = faker.name.firstName();
 
-  socket.on(SEND_MESSAGE, (data) => {
-    io.emit(RECEIVE_MESSAGE, {
-      user: generatedName,
-      content: data,
-    });
+  socket.on(SEND_MESSAGE, ({author, message}) => {
+    io.emit(RECEIVE_MESSAGE, { author, message });
   });
 
   socket.on(USER_STARTED_TYPING, () => {
