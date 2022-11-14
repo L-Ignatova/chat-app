@@ -4,6 +4,7 @@ const USER_STARTED_TYPING = "user_started_typing";
 const USER_IS_TYPING = "user_is_typing";
 const USER_STOPPED_TYPING = "user_stopped_typing";
 const USER_IS_NOT_TYPING = "user_is_not_typing";
+const USER_HAS_JOINED = "user_has_joined";
 const ON_CONNECTION = "connection";
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
   USER_STOPPED_TYPING,
   USER_IS_TYPING,
   USER_IS_NOT_TYPING,
+  USER_HAS_JOINED,
   ON_CONNECTION
 }

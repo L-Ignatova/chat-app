@@ -10,6 +10,7 @@ const {
   USER_STOPPED_TYPING,
   USER_IS_TYPING,
   USER_IS_NOT_TYPING,
+  USER_HAS_JOINED,
   ON_CONNECTION
 } = require("../src/utils/constants.js");
 
@@ -27,6 +28,13 @@ const io = new Server(server, {
 // this starts running when someone starts using the server
 io.on(ON_CONNECTION, (socket) => {
   console.log(`User connected: ${socket.id}`);
+
+  socket.on(USER_HAS_JOINED, (username) => {
+    io.emit(RECEIVE_MESSAGE, {
+      author: `system`,
+      message: `${username} has joined the chat`
+    });
+  });
 
   socket.on(SEND_MESSAGE, ({author, message}) => {
     io.emit(RECEIVE_MESSAGE, { author, message });
