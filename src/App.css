@@ -1,15 +1,23 @@
 .App {
   margin: 0 auto;
   width: 180px;
-  height: 300px;
+  height: 330px;
   background-color: rgba(64, 61, 61, 0.6);
   border-radius: 20px;
-  padding: 30px 2px;
+  padding: 20px 2px;
   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
 }
-
+.languages-buttons {
+  box-sizing: border-box;
+  display: flex;
+  margin: 5px;
+}
+.languages-buttons button {
+  border-radius: 50%;
+  width: 15%;
+}
 .input-username {
   max-width: 100%;
   padding: 10px 5px;
@@ -28,7 +36,7 @@
 }
 
 #chat-room {
-  height: 80%;
+  height: 60%;
   background-color: rgba(255, 255, 255, 0.6);
   overflow-y: scroll;
   justify-content: flex-end;
@@ -58,8 +66,24 @@
   padding: 3px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.6);
-  font-family:Arial;
+  font-family: Arial;
+  width: 80%;
 }
+.your-msg {
+  margin-left: auto;
+  text-align: right;
+}
+.notification-message{
+  font-family: Arial;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.7rem;
+  background-color: transparent;
+  text-align: center;
+  margin: 12px 5px;
+  padding: 3px;
+}
+
 .msg p {
   margin: 4px 2px;
   overflow-wrap: break-word;
@@ -80,16 +104,16 @@ button {
   margin: 2px;
   padding: 3px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-	background-color:white;
-	border-radius:6px;
-	border:none;
-	display:inline-block;
-	cursor:pointer;
-	color: rgb(26, 25, 25);
-	font-family:Arial;
-	font-size:0.8rem;
-	font-weight:bold;
-	text-decoration:none;
+background-color:white;
+border-radius:6px;
+border:none;
+display:inline-block;
+cursor:pointer;
+color: rgb(26, 25, 25);
+font-family:Arial;
+font-size:0.8rem;
+font-weight:bold;
+text-decoration:none;
 }
 button:hover {
   background-color: #2EE59D;
@@ -101,8 +125,8 @@ button:hover {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
