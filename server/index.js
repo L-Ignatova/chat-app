@@ -11,6 +11,7 @@ const {
   USER_IS_TYPING,
   USER_IS_NOT_TYPING,
   USER_HAS_JOINED,
+  USER_HAS_LEFT,
   ON_CONNECTION
 } = require("../src/utils/constants.js");
 
@@ -32,7 +33,7 @@ io.on(ON_CONNECTION, (socket) => {
   socket.on(USER_HAS_JOINED, (username) => {
     io.emit(RECEIVE_MESSAGE, {
       author: `system`,
-      message: `${username} has joined the chat`
+      message: [username, 'Join']
     });
   });
 
@@ -45,6 +46,14 @@ io.on(ON_CONNECTION, (socket) => {
   });
   socket.on(USER_STOPPED_TYPING, () => {
     socket.broadcast.emit(USER_IS_NOT_TYPING);
+  });
+
+  socket.on(USER_HAS_LEFT, (username) => {
+    io.emit(RECEIVE_MESSAGE, {
+      author: `system`,
+      message: [username, 'Left']
+    });
+    socket.disconnect();
   });
 });
 
