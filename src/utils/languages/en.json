@@ -1,9 +1,10 @@
 {
   "login": "Login",
   "username": "username",
-  "noMessagesInChat": "'No messages in chat yet.",
+  "noMessagesInChat": "No messages in chat yet.",
   "userIsTypingMsg": "User is typing...",
-  "hasJoinedChat": "has joined the chat",
+  "userInChat_Join": "joined the chat",
+  "userInChat_Left": "left the chat",
   "send": "Send",
   "messageOoo": "Message..."
 }

@@ -3,7 +3,8 @@
   "username": "потребител",
   "noMessagesInChat": "Чатът е празен, напиши нещо...",
   "userIsTypingMsg": "Потребителят пише...",
-  "hasJoinedChat": "се включи в чата",
+  "userInChat_Join": "се включи в чата",
+  "userInChat_Left": "напусна чата",
   "send": "Прати",
   "messageOoo": "Пиши..."
 }
