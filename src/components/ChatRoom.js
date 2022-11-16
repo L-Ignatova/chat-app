@@ -17,10 +17,13 @@ const ChatRoom = ({ username, activeLocale }) => {
     socket.on(RECEIVE_MESSAGE, ({author, message}) => {
       const [lastMessage] = messageList.slice(-1);
       const isSameAuthor = lastMessage?.author === author && author !== "system";
+      const isSystemMessage = Array.isArray(message) && (message[1] === "Join" || message[1] === "Left");
 
       const updatedMessage = isSameAuthor
         ? [...lastMessage.messages, message]
-        : [message];
+        : isSystemMessage
+          ? [`${message[0]} ${activeLocale[`userInChat_${message[1]}`]}`]
+          : [message];
       const updatedMessageList = isSameAuthor
         ? messageList.slice(0, messageList.length-1)
         : messageList;

@@ -4,7 +4,7 @@ import ChatControls from './components/ChatControls';
 import ChatRoom from './components/ChatRoom';
 import LoginScreen from './components/LoginScreen';
 import { SocketContext, socket } from './context/socket';
-import { USER_HAS_JOINED } from './utils/constants';
+import { USER_HAS_JOINED, USER_HAS_LEFT } from './utils/constants';
 
 import bgTranslation from "./utils/languages/bg.json"
 import enTranslation from "./utils/languages/en.json"
@@ -27,6 +27,10 @@ const App = () => {
     socket.emit(USER_HAS_JOINED, username);
   }, [isLogged]);
 
+  const handleLogout = () => {
+    socket.emit(USER_HAS_LEFT, username);
+  };
+
   return (
     <SocketContext.Provider value={socket}>
       <div className='App'>
@@ -37,6 +41,7 @@ const App = () => {
         {isLogged ? <>
             <ChatRoom username={username} activeLocale={activeLocale}/>
             <ChatControls username={username} activeLocale={activeLocale}/>
+            <button className='logout-btn' onClick={handleLogout}>X</button>
           </> : <LoginScreen
             setIsLogged={setIsLogged}
             username={username}
