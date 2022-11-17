@@ -1,0 +1,11 @@
+{
+  "ChatControls_LoginButton": "Login",
+  "ChatControls_UsernamePlaceholder": "username",
+  "ChatControls_SendButton": "Send",
+  "ChatControls_MessagePlaceholder": "Message...",
+  "ChatRoom_NoMessages": "No messages in chat yet.",
+  "ChatRoom_UserIsTypingMsg": "User is typing...",
+  "ChatRoom_UserInChat_Join": "joined the chat",
+  "ChatRoom_UserInChat_Left": "left the chat",
+  "ChatRoom_AuthorYou": "You"
+}

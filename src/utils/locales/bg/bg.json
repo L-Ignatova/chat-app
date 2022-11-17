@@ -1,0 +1,11 @@
+{
+ "ChatControls_LoginButton": "Влез",
+ "ChatControls_UsernamePlaceholder": "потребител",
+ "ChatControls_SendButton": "Прати",
+ "ChatControls_MessagePlaceholder": "Пиши...",
+ "ChatRoom_NoMessages": "Чатът е празен, напиши нещо...",
+ "ChatRoom_UserIsTypingMsg": "Потребителят пише...",
+ "ChatRoom_UserInChat_Join": "се включи в чата",
+ "ChatRoom_UserInChat_Left": "напусна чата",
+ "ChatRoom_AuthorYou": "Ти"
+}
