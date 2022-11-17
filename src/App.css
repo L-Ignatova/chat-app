@@ -1,46 +1,44 @@
 .App {
   margin: 0 auto;
-  width: 180px;
-  height: 330px;
+  width: 500px;
+  height: 400px;
   background-color: rgba(64, 61, 61, 0.6);
-  border-radius: 20px;
   padding: 20px 2px;
   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
 }
-.languages-buttons {
-  box-sizing: border-box;
-  display: flex;
-  margin: 5px;
-}
-.languages-buttons button,
-.logout-btn {
-  border-radius: 50%;
-  width: 15%;
-}
+
 .input-username {
-  max-width: 100%;
+  width: 100%;
   padding: 10px 5px;
   margin: 10px auto;
   border: none;
-  box-sizing: border-box;
   border-radius: 3px;
 }
+
 .login-screen {
   margin: 10px;
   display: flex;
-  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.logout-btn {
+  background-color: rgb(240, 128, 128);
+  box-shadow: 0px 5px 15px rgba(240, 128, 128, 0.4);
+  color: #fff;
+}
+.logout-btn:hover {
+  background-color: rgb(236, 86, 86);
+  box-shadow: 0px 5px 15px rgba(236, 86, 86, 0.4);
 }
 
 #chat-room {
   height: 60%;
   background-color: rgba(255, 255, 255, 0.6);
   overflow-y: scroll;
-  justify-content: flex-end;
 }
 
 #chat-controls {
@@ -52,7 +50,6 @@
 }
 
 #message-input {
-  box-sizing: border-box;
   padding: 5px;
   width: 70%;
   height: 100%;
@@ -68,7 +65,7 @@
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.6);
   font-family: Arial;
-  width: 80%;
+  width: 70%;
 }
 .your-msg {
   margin-left: auto;
@@ -89,32 +86,35 @@
   margin: 4px 2px;
   overflow-wrap: break-word;
 }
+
 .msg .username {
   font-weight: 600;
 }
+
 .user-typing {
   padding: 5px;
   margin: 10px 2px 5px 2px;
 }
+
 textarea {
   resize: none;
 }
 
 button {
-  width: 25%;
-  margin: 2px;
-  padding: 3px;
+  max-width: 15%;
+  margin: 10px;
+  padding: 3px 8px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-background-color:white;
-border-radius:6px;
-border:none;
-display:inline-block;
-cursor:pointer;
-color: rgb(26, 25, 25);
-font-family:Arial;
-font-size:0.8rem;
-font-weight:bold;
-text-decoration:none;
+  background-color:white;
+  border-radius:6px;
+  border:none;
+  display:inline-block;
+  cursor:pointer;
+  color: rgb(26, 25, 25);
+  font-family:Arial;
+  font-size:0.8rem;
+  font-weight:bold;
+  text-decoration:none;
 }
 button:hover {
   background-color: #2EE59D;
