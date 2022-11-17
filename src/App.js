@@ -1,54 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ChatControls from './components/ChatControls';
 import ChatRoom from './components/ChatRoom';
+import LanguageControls from './components/LanguageControls';
 import LoginScreen from './components/LoginScreen';
+import Logout from './components/Logout';
 import { SocketContext, socket } from './context/socket';
-import { USER_HAS_JOINED, USER_HAS_LEFT } from './utils/constants';
-
-import bgTranslation from "./utils/languages/bg.json"
-import enTranslation from "./utils/languages/en.json"
-const locale = {
-  "en": enTranslation,
-  "bg": bgTranslation,
-};
+import { UsernameContext } from './context/username';
 
 const App = () => {
+  const [contextUsername, setContextUsername] = useState("");
   const [isLogged, setIsLogged] = useState(false);
-  const [username, setUsername] = useState("");
-  const [language, setLanguage] = useState("en");
-  const [activeLocale, setActiveLocale] = useState(locale.en);
 
-  useEffect(() => {
-    setActiveLocale(locale[language]);
-  }, [language]);
-
-  useEffect(() => {
-    socket.emit(USER_HAS_JOINED, username);
-  }, [isLogged]);
-
-  const handleLogout = () => {
-    socket.emit(USER_HAS_LEFT, username);
+  const setUsernameContext = (username) => {
+    setContextUsername(username);
   };
 
   return (
     <SocketContext.Provider value={socket}>
-      <div className='App'>
-        <div className='languages-buttons'>
-          <button onClick={() => setLanguage("bg")}>bg</button>
-          <button onClick={() => setLanguage("en")}>en</button>
+      <UsernameContext.Provider value={contextUsername}>
+        <div className='App'>
+          <LanguageControls />
+          {isLogged
+          ? <>
+              <ChatRoom />
+              <ChatControls />
+              <Logout />
+            </>
+          : <LoginScreen
+              setIsLogged={setIsLogged}
+              setUsernameContext={setUsernameContext}
+            />}
         </div>
-        {isLogged ? <>
-            <ChatRoom username={username} activeLocale={activeLocale}/>
-            <ChatControls username={username} activeLocale={activeLocale}/>
-            <button className='logout-btn' onClick={handleLogout}>X</button>
-          </> : <LoginScreen
-            setIsLogged={setIsLogged}
-            username={username}
-            setUsername={setUsername}
-            activeLocale={activeLocale}
-          />}
-      </div>
+      </UsernameContext.Provider>
     </SocketContext.Provider>
   );
 }

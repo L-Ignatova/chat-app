@@ -1,10 +1,13 @@
 import React from 'react';
 import { randomNumber } from '../utils/chatUtils';
 import Notification from './Notification';
+import { ChatRoom_AuthorYou } from "../utils/locales/translationKeys";
+import { useTranslation } from 'react-i18next';
 
 const ChatRoomMessage = ({msg, username}) => {
+  const {t} = useTranslation();
   const isYourMsg = msg.author === username ? "your-msg" : "";
-  const author = isYourMsg ? "You" : msg.author;
+  const author = isYourMsg ? t(ChatRoom_AuthorYou) : msg.author;
  
   const isSystemNotification = msg.author === 'system';
 

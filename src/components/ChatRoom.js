@@ -5,11 +5,16 @@ import { USER_IS_TYPING, USER_IS_NOT_TYPING, RECEIVE_MESSAGE } from '../utils/co
 import ChatRoomMessage from './ChatRoomMessage';
 import Notification from './Notification';
 import UserTyping from './UserTyping';
+import { useTranslation } from 'react-i18next';
+import { ChatRoom_NoMessages } from "../utils/locales/translationKeys";
+import { UsernameContext } from '../context/username';
 
-const ChatRoom = ({ username, activeLocale }) => {
+const ChatRoom = () => {
   const [isUserTyping, setIsUserTyping] = useState(false);
   const [messageList, setMessageList] = useState([]);
+  const username = useContext(UsernameContext)
   const socket = useContext(SocketContext);
+  const { t } = useTranslation();
 
   const authoredMessageList = messageList.filter(({author}) => author !== "system");
 
@@ -22,7 +27,7 @@ const ChatRoom = ({ username, activeLocale }) => {
       const updatedMessage = isSameAuthor
         ? [...lastMessage.messages, message]
         : isSystemMessage
-          ? [`${message[0]} ${activeLocale[`userInChat_${message[1]}`]}`]
+          ? [`${message[0]} ${t(`ChatRoom_UserInChat_${message[1]}`)}`]
           : [message];
       const updatedMessageList = isSameAuthor
         ? messageList.slice(0, messageList.length-1)
@@ -60,10 +65,12 @@ const ChatRoom = ({ username, activeLocale }) => {
       })}
 
       {!authoredMessageList.length && <Notification
-        notificationMessage={activeLocale.noMessagesInChat}
+        notificationMessage={t(ChatRoom_NoMessages)}
       />}
-     
-      <UserTyping show={isUserTyping} activeLocale={activeLocale}/>
+      <div className='round-buttons'>
+        <button>{">>"}</button>
+      </div>
+      <UserTyping show={isUserTyping}/>
     </div>
   );
 };

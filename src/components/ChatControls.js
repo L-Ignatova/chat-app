@@ -5,10 +5,15 @@ import {
   USER_STARTED_TYPING,
   USER_STOPPED_TYPING
 } from '../utils/constants';
+import { ChatControls_SendButton, ChatControls_MessagePlaceholder } from "../utils/locales/translationKeys";
+import { useTranslation } from 'react-i18next';
+import { UsernameContext } from '../context/username';
 
-const ChatControls = ({ username, activeLocale }) => {
+const ChatControls = () => {
   const [message, setMessage] = useState("");
   const socket = useContext(SocketContext);
+  const username = useContext(UsernameContext);
+  const { t } = useTranslation();
 
   const handleOnChange = (ev) => {
     socket.emit(USER_STARTED_TYPING);
@@ -31,10 +36,16 @@ const ChatControls = ({ username, activeLocale }) => {
 
   return (
     <div id='chat-controls'>
-      <textarea placeholder={activeLocale.messageOoo} value={message} id='message-input' onChange={handleOnChange} />
-      <button onClick={sendMessage}>{activeLocale.send}</button>
+      <textarea
+        placeholder={t(ChatControls_MessagePlaceholder)}
+        value={message}
+        id='message-input'
+        onChange={handleOnChange}
+      />
+      <button onClick={sendMessage}>{t(ChatControls_SendButton)}</button>
     </div>
   );
 };
 
+ChatControls.displayName = "ChatControls";
 export default ChatControls;
