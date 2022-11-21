@@ -4,9 +4,10 @@
   height: 400px;
   background-color: rgba(64, 61, 61, 0.6);
   padding: 20px 2px;
-  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+  box-shadow: rgb(0 0 0 / 40%) 0px 0px 20px 5px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 }
 
 .input-username {
@@ -39,6 +40,14 @@
   height: 60%;
   background-color: rgba(255, 255, 255, 0.6);
   overflow-y: scroll;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.chat-room-lower-notifications {
+  display: flex;
+
 }
 
 #chat-controls {
@@ -66,6 +75,7 @@
   background-color: rgba(255, 255, 255, 0.6);
   font-family: Arial;
   width: 70%;
+  box-shadow: -2px 2px 5px -1px rgb(0 0 0 / 30%);
 }
 .your-msg {
   margin-left: auto;
@@ -94,6 +104,7 @@
 .user-typing {
   padding: 5px;
   margin: 10px 2px 5px 2px;
+  font-style: italic;
 }
 
 textarea {
@@ -101,7 +112,6 @@ textarea {
 }
 
 button {
-  max-width: 15%;
   margin: 10px;
   padding: 3px 8px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
