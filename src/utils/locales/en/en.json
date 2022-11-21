@@ -3,6 +3,7 @@
   "ChatControls_UsernamePlaceholder": "username",
   "ChatControls_SendButton": "Send",
   "ChatControls_MessagePlaceholder": "Message...",
+  "ChatControls_LeaveChat": "Leave",
   "ChatRoom_NoMessages": "No messages in chat yet.",
   "ChatRoom_UserIsTypingMsg": "User is typing...",
   "ChatRoom_UserInChat_Join": "joined the chat",

@@ -3,6 +3,7 @@
  "ChatControls_UsernamePlaceholder": "потребител",
  "ChatControls_SendButton": "Прати",
  "ChatControls_MessagePlaceholder": "Пиши...",
+ "ChatControls_LeaveChat": "Изход",
  "ChatRoom_NoMessages": "Чатът е празен, напиши нещо...",
  "ChatRoom_UserIsTypingMsg": "Потребителят пише...",
  "ChatRoom_UserInChat_Join": "се включи в чата",
