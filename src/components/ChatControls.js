@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { SocketContext } from '../context/socket';
 import {
   SEND_MESSAGE,
@@ -13,6 +13,7 @@ const ChatControls = () => {
   const [message, setMessage] = useState("");
   const socket = useContext(SocketContext);
   const username = useContext(UsernameContext);
+  const messageInput = useRef(null);
   const { t } = useTranslation();
 
   const handleOnChange = (ev) => {
@@ -31,6 +32,7 @@ const ChatControls = () => {
 
     socket.emit(SEND_MESSAGE, messageContent);
     socket.emit(USER_STOPPED_TYPING);
+    messageInput.current.focus();
     setMessage("");
   };
 
@@ -39,6 +41,7 @@ const ChatControls = () => {
       <textarea
         placeholder={t(ChatControls_MessagePlaceholder)}
         value={message}
+        ref={messageInput}
         id='message-input'
         onChange={handleOnChange}
       />
