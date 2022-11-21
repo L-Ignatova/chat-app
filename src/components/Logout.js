@@ -13,7 +13,7 @@ const Logout = () => {
   };
  
   return (
-    <div className='round-buttons'>
+    <div>
       <button className='logout-btn' onClick={handleLogout}>Leave</button>
     </div>
   );

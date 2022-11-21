@@ -55,22 +55,25 @@ const ChatRoom = () => {
  
   return (
     <div id="chat-room">
-      {!!messageList.length && messageList.map(msg => {
-          return (
-            <ChatRoomMessage
-              key={randomNumber()}
-              msg={msg}
-              username={username}
-            />)
-      })}
-
-      {!authoredMessageList.length && <Notification
-        notificationMessage={t(ChatRoom_NoMessages)}
-      />}
-      <div className='round-buttons'>
-        <button>{">>"}</button>
+      <div className="chat-room-messages">
+        {!!messageList.length && messageList.map(msg => {
+            return (
+              <ChatRoomMessage
+                key={randomNumber()}
+                msg={msg}
+                username={username}
+              />)
+        })}
+        {!authoredMessageList.length && <Notification
+          notificationMessage={t(ChatRoom_NoMessages)}
+        />}
       </div>
-      <UserTyping show={isUserTyping}/>
+      <div className="chat-room-lower-notifications">
+        <div>
+          <button>{">>"}</button>
+        </div>
+        <UserTyping show={isUserTyping}/>
+      </div>
     </div>
   );
 };

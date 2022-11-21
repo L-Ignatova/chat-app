@@ -8,7 +8,7 @@ const LanguageControls = () => {
   };
  
   return (
-    <div className='round-buttons'>
+    <div>
       <button onClick={handleChangeLanguage}>bg</button>
       <button onClick={handleChangeLanguage}>en</button>
     </div>
