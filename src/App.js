@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom"
 import './App.css';
-import ChatControls from './components/ChatControls';
-import ChatRoom from './components/ChatRoom';
+import Chat from './components/Chat';
 import LanguageControls from './components/LanguageControls';
 import LoginScreen from './components/LoginScreen';
-import Logout from './components/Logout';
 import { SocketContext, socket } from './context/socket';
 import { UsernameContext } from './context/username';
 
@@ -21,16 +20,13 @@ const App = () => {
       <UsernameContext.Provider value={contextUsername}>
         <div className='App'>
           <LanguageControls />
-          {isLogged
-          ? <>
-              <ChatRoom />
-              <ChatControls />
-              <Logout />
-            </>
-          : <LoginScreen
+          <Routes>
+            <Route path='/' element={<LoginScreen
               setIsLogged={setIsLogged}
               setUsernameContext={setUsernameContext}
-            />}
+            />}></Route>
+            <Route path='/chat' element={<Chat isLogged={isLogged}/>}></Route>
+          </Routes>
         </div>
       </UsernameContext.Provider>
     </SocketContext.Provider>
