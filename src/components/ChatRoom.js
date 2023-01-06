@@ -66,7 +66,9 @@ const ChatRoom = () => {
           notificationMessage={t(ChatRoom_NoMessages)}
         />}
       </div>
-      <UserTyping show={isUserTyping}/>
+      <div className="chat-room-lower-notifications">
+        <UserTyping show={isUserTyping}/>
+      </div>
     </div>
   );
 };
