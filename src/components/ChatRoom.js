@@ -12,7 +12,7 @@ import { UsernameContext } from '../context/username';
 const ChatRoom = () => {
   const [isUserTyping, setIsUserTyping] = useState(false);
   const [messageList, setMessageList] = useState([]);
-  const username = useContext(UsernameContext)
+  const username = useContext(UsernameContext);
   const socket = useContext(SocketContext);
   const { t } = useTranslation();
 
@@ -27,7 +27,6 @@ const ChatRoom = () => {
       });
       scrollToChatBottom();
     });
-   
     
     //the listeners must be removed in the cleanup step, in order to prevent multiple event registrations
     return () => {
@@ -53,7 +52,7 @@ const ChatRoom = () => {
  
   return (
     <div id="chat-room">
-      <div className="chat-room-messages">
+      <div className='chat-room-messages'>
         {!!messageList.length && messageList.map(msg => {
             return (
               <ChatRoomMessage
@@ -62,16 +61,12 @@ const ChatRoom = () => {
                 username={username}
               />)
         })}
+
         {!authoredMessageList.length && <Notification
           notificationMessage={t(ChatRoom_NoMessages)}
         />}
       </div>
-      <div className="chat-room-lower-notifications">
-        <div>
-          <button>{">>"}</button>
-        </div>
-        <UserTyping show={isUserTyping}/>
-      </div>
+      <UserTyping show={isUserTyping}/>
     </div>
   );
 };
