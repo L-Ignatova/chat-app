@@ -38,6 +38,9 @@ const ChatControls = () => {
 
   return (
     <div id='chat-controls'>
+      <div className='user-board-buttons'>
+        <button>{">"}</button>
+      </div>
       <textarea
         placeholder={t(ChatControls_MessagePlaceholder)}
         value={message}
