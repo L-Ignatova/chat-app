@@ -19,3 +19,5 @@ export const updateMessagesList = (prevList, currentMessageAuthor, currentMessag
     : prevList;
   return [updatedList, updatedMessage];
 };
+
+export const isLongerThan = (word) => word.length > 4;
