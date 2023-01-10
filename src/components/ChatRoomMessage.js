@@ -18,7 +18,7 @@ const ChatRoomMessage = ({msg, username}) => {
           {msg.messages.map(m => <p
             key={randomNumber()}
             className='msg-content'>
-              {`${m}`}
+              {m}
             </p>)
           }
         </div>;
