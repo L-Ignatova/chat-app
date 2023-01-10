@@ -7,6 +7,7 @@ import { SocketContext } from '../context/socket';
 import { USER_HAS_JOINED } from '../utils/constants';
 import UsernameErrorMsg from './UsernameError';
 import { isLongerThan } from '../utils/chatUtils';
+import isAlphanumeric from "validator/lib/isAlphanumeric";
 
 const LoginScreen = ({ setIsLogged, setUsernameContext }) => {
   const [username, setUsername] = useState("");
@@ -16,10 +17,11 @@ const LoginScreen = ({ setIsLogged, setUsernameContext }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!isLongerThan(username)) {
+    if (!isLongerThan(username) || !isAlphanumeric(username)) {
       setUsernameError(true);
       return;
     }
+    
     setUsernameContext(username);
     setIsLogged(true);
     navigate("/chat");
@@ -28,7 +30,7 @@ const LoginScreen = ({ setIsLogged, setUsernameContext }) => {
 
   const onInputChange = (ev) => {
     setUsername(ev.target.value);
-    if (usernameError && isLongerThan(ev.target.value)) {
+    if (usernameError && isLongerThan(ev.target.value) && isAlphanumeric(username)) {
       setUsernameError(false);
     };
   };
