@@ -1,6 +1,7 @@
 {
  "ChatControls_LoginButton": "Влез",
  "ChatControls_UsernamePlaceholder": "потребител",
+ "ChatControls_UsernameErrorMessage": "Потребителското име трябва да бъде минимум 4 символа, само букви и цифри.",
  "ChatControls_SendButton": "Прати",
  "ChatControls_MessagePlaceholder": "Пиши...",
  "ChatControls_LeaveChat": "Изход",
