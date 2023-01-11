@@ -1,5 +1,6 @@
 export const ChatControls_LoginButton = "ChatControls_LoginButton";
 export const ChatControls_UsernamePlaceholder = "ChatControls_UsernamePlaceholder";
+export const ChatControls_UsernameErrorMessage = "ChatControls_UsernameErrorMessage";
 export const ChatControls_SendButton = "ChatControls_SendButton";
 export const ChatControls_MessagePlaceholder = "ChatControls_MessagePlaceholder";
 export const ChatControls_LeaveChat = "ChatControls_LeaveChat";
