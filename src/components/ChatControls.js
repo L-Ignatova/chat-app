@@ -8,6 +8,7 @@ import {
 import { ChatControls_SendButton, ChatControls_MessagePlaceholder } from "../utils/locales/translationKeys";
 import { useTranslation } from 'react-i18next';
 import { UsernameContext } from '../context/username';
+import {sanitize} from "dompurify";
 
 const ChatControls = () => {
   const [message, setMessage] = useState("");
@@ -28,7 +29,8 @@ const ChatControls = () => {
     if (!message.length) {
       return;
     }
-    const messageContent = {author: username, message};
+    
+    const messageContent = {author: username, message: sanitize(message)};
 
     socket.emit(SEND_MESSAGE, messageContent);
     socket.emit(USER_STOPPED_TYPING);

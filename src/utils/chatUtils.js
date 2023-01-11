@@ -20,4 +20,4 @@ export const updateMessagesList = (prevList, currentMessageAuthor, currentMessag
   return [updatedList, updatedMessage];
 };
 
-export const isLongerThan = (word) => word.length > 4;
+export const isLongerThan = (word) => word.length >= 4;
